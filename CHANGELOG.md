@@ -6,7 +6,7 @@ All notable changes follow semantic versioning.
 
 ### Changed
 - Pinned reviewed GitHub Actions major releases by immutable commit SHA.
-- Grouped compatible dependency updates and require explicit review for future major upgrades.
+- Grouped compatible dependency updates and now require explicit review for Python-tool major upgrades.
 
 ## [0.1.0] - 2026-08-02
 

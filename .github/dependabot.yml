@@ -4,24 +4,39 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 3
     groups:
       python-development-tools:
-        patterns: ["*"]
+        patterns:
+          - build
+          - hatchling
+          - mypy
+          - pytest
+          - pytest-cov
+          - ruff
         update-types: ["minor", "patch"]
     ignore:
-      - dependency-name: "*"
+      - dependency-name: build
+        update-types: ["version-update:semver-major"]
+      - dependency-name: hatchling
+        update-types: ["version-update:semver-major"]
+      - dependency-name: mypy
+        update-types: ["version-update:semver-major"]
+      - dependency-name: pytest
+        update-types: ["version-update:semver-major"]
+      - dependency-name: pytest-cov
+        update-types: ["version-update:semver-major"]
+      - dependency-name: ruff
         update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 3
     groups:
-      github-actions-compatible-updates:
-        patterns: ["*"]
+      reviewed-actions-compatible-updates:
+        patterns:
+          - actions/checkout
+          - astral-sh/setup-uv
         update-types: ["minor", "patch"]
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
