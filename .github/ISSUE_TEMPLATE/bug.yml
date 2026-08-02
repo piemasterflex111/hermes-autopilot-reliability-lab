@@ -1,0 +1,24 @@
+name: Defect report
+description: Record a reproducible failure and regression requirement.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: observed
+    attributes: { label: Observed behavior }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected invariant }
+    validations: { required: true }
+  - type: textarea
+    id: reproduce
+    attributes: { label: Minimal reproduction }
+    validations: { required: true }
+  - type: textarea
+    id: evidence
+    attributes: { label: Evidence, logs, and affected state }
+    validations: { required: true }
+  - type: textarea
+    id: regression
+    attributes: { label: Required regression test }
+    validations: { required: true }

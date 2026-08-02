@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hermes-autopilot-reliability-lab"
+version = "0.1.0"
+description = "Evidence-driven reliability engineering for autonomous repository missions."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Payam Adloo" }]
+keywords = ["ai-agents", "reliability", "benchmarking", "verification", "hermes-agent"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.3,<2",
+  "mypy>=1.19,<2",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6,<8",
+  "ruff>=0.13,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/piemasterflex111/hermes-autopilot-reliability-lab"
+Repository = "https://github.com/piemasterflex111/hermes-autopilot-reliability-lab"
+Issues = "https://github.com/piemasterflex111/hermes-autopilot-reliability-lab/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hermes_autopilot_reliability"]
+
+[tool.uv]
+required-version = ">=0.11.0"
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["hermes_autopilot_reliability"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "N", "RUF", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["hermes_autopilot_reliability"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = true
